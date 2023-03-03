@@ -1,0 +1,70 @@
+<div class="currency-exchange-container" fxLayoutAlign="center center">
+
+    <div class="currency-exchange-box">
+
+        <header>
+            <div class="currentRateBox">
+                <span>
+                    EUR
+                </span>
+                <span>
+                    {{rateEUR}}
+                </span>
+            </div>
+
+            <div class="currentRateBox">
+                <span>
+                    USD
+                </span>
+                <span>
+                    {{rateUSD}}
+                </span>
+            </div>
+
+        </header>
+
+        <section>
+
+            <form [formGroup]="currencyForm" mat-dialog-content class="calculateCurrencyContainer">
+
+                <div class="countBox w100">
+
+                    <mat-form-field class="w70" appearance="outline" floatLabel="always">
+                        <mat-label>Amount</mat-label>
+                        <input #actionLeftInput id="actionLeftInput" type="number" formControlName="leftInput"
+                            name="name" matInput />
+                    </mat-form-field>
+
+                    <mat-form-field class="w25" appearance="outline" floatLabel="always">
+                        <mat-label>Сurrency</mat-label>
+                        <mat-select formControlName="leftSelect">
+                            <mat-option (onSelectionChange)="anotherMethod($event, currencyList, 'leftSelect')"
+                                *ngFor="let currencyList of currenciesList" [value]="currencyList">
+                                {{currencyList}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="countBox w100">
+                    
+                    <mat-form-field class="w70" appearance="outline" floatLabel="always">
+                        <mat-label>Amount</mat-label>
+                        <input #actionRightInput id="actionRightInput" type="number" formControlName="rightInput"
+                            name="name" matInput />
+                    </mat-form-field>
+
+                    <mat-form-field class="w25" appearance="outline" floatLabel="always">
+                        <mat-label>Сurrency</mat-label>
+                        <mat-select formControlName="rightSelect">
+                            <mat-option (onSelectionChange)="anotherMethod($event, currencyList, 'rightSelect')"
+                                *ngFor="let currencyList of currenciesList" [value]="currencyList">
+                                {{currencyList}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
